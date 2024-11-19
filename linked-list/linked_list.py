@@ -14,6 +14,17 @@ class LinkedList:
             self.head = newNode
         self.length += 1
 
+    def insertAtEnd(self, data):
+        newNode = Node(data)
+        if self.length == 0:
+            self.head = newNode
+        else:
+            current = self.head
+            while current.next != None:
+                current = current.next
+            current.next = newNode
+        self.length += 1
+
     def print(self):
         h = self.head
         while(h):
@@ -25,4 +36,6 @@ list = LinkedList()
 list.insertAtBeggining(10)
 list.insertAtBeggining(10)
 list.insertAtBeggining(1460)
+list.print()
+list.insertAtEnd(18)
 list.print()
