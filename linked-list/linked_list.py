@@ -44,6 +44,11 @@ class LinkedList:
                 current.next = newNode
                 self.length += 1
 
+    def deleteFromBeginning(self):
+        if self.length != 0:
+            self.head =  self.head.next
+            self.length -= 1
+
     def print(self):
         h = self.head
         while(h):
@@ -63,4 +68,6 @@ list.print()
 list.insertAtGivenPosition(5, 17)
 list.print()
 list.insertAtGivenPosition(4, 88)
+list.print()
+list.deleteFromBeginning()
 list.print()
