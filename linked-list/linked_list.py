@@ -25,6 +25,25 @@ class LinkedList:
             current.next = newNode
         self.length += 1
 
+    def insertAtGivenPosition(self, position, data):
+        if position > self.length or position < 0:
+            return None
+        else:
+            if position == 0:
+                self.insertAtBeggining(data)
+            elif position == self.length:
+                self.insertAtEnd(data)
+            else:
+                newNode = Node(data)
+                count = 1
+                current = self.head
+                while count < position-1:
+                    count += 1
+                    current = current.next
+                newNode.next = current.next
+                current.next = newNode
+                self.length += 1
+
     def print(self):
         h = self.head
         while(h):
@@ -38,4 +57,10 @@ list.insertAtBeggining(10)
 list.insertAtBeggining(1460)
 list.print()
 list.insertAtEnd(18)
+list.print()
+list.insertAtGivenPosition(0, 3)
+list.print()
+list.insertAtGivenPosition(5, 17)
+list.print()
+list.insertAtGivenPosition(4, 88)
 list.print()
