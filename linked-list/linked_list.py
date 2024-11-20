@@ -19,29 +19,29 @@ class LinkedList:
         if self.length == 0:
             self.head = newNode
         else:
-            current = self.head
-            while current.next != None:
-                current = current.next
-            current.next = newNode
+            currentNode = self.head
+            while currentNode.next != None:
+                currentNode = currentNode.next
+            currentNode.next = newNode
         self.length += 1
 
     def insertAtGivenPosition(self, position, data):
         if position > self.length or position < 0:
             return None
         else:
-            if position == 0:
+            if position == 1:
                 self.insertAtBeggining(data)
             elif position == self.length:
                 self.insertAtEnd(data)
             else:
                 newNode = Node(data)
                 count = 1
-                current = self.head
+                currentNode = self.head
                 while count < position-1:
                     count += 1
-                    current = current.next
-                newNode.next = current.next
-                current.next = newNode
+                    currentNode = currentNode.next
+                newNode.next = currentNode.next
+                currentNode.next = newNode
                 self.length += 1
 
     def deleteFromBeginning(self):
@@ -51,13 +51,35 @@ class LinkedList:
 
     def deleteFromEnd(self):
         if self.length != 0:
-            current = self.head
+            currentNode = self.head
             auxiliaryNode = self.head
-            while current.next != None:
-                auxiliaryNode = current
-                current = current.next
+            while currentNode.next != None:
+                auxiliaryNode = currentNode
+                currentNode = currentNode.next
             auxiliaryNode.next = None
             self.length -= 1
+
+    def deleteAtGivenPosition(self, position):
+        count = 1
+        currentNode = self.head
+        auxiliaryNode = self.head
+        if position > self.length or position < 0:
+            return None
+        else:
+            if position == 1:
+                self.deleteFromBeginning()
+            elif position == self.length:
+                self.deleteFromEnd()
+            else:
+                while currentNode.next != None or count < position-1:
+                    if count==position:
+                        auxiliaryNode.next=currentNode.next
+                        self.length -= 1
+                        return
+                    else:
+                        auxiliaryNode=currentNode
+                        currentNode=currentNode.next
+                    count += 1
 
     def print(self):
         h = self.head
@@ -67,19 +89,21 @@ class LinkedList:
         print('\n')
 
 list = LinkedList()
-list.insertAtBeggining(10)
-list.insertAtBeggining(10)
-list.insertAtBeggining(1460)
+list.insertAtBeggining(1)
+list.insertAtBeggining(2)
+list.insertAtBeggining(3)
 list.print()
-list.insertAtEnd(18)
+list.insertAtEnd(4)
 list.print()
-list.insertAtGivenPosition(0, 3)
+list.insertAtGivenPosition(1, 5)
 list.print()
-list.insertAtGivenPosition(5, 17)
+list.insertAtGivenPosition(5, 6)
 list.print()
-list.insertAtGivenPosition(4, 88)
+list.insertAtGivenPosition(4, 7)
 list.print()
 list.deleteFromBeginning()
 list.print()
 list.deleteFromEnd()
+list.print()
+list.deleteAtGivenPosition(2)
 list.print()
