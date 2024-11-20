@@ -56,18 +56,6 @@ class DoublyLinkedList:
             h=h.next
         print('\n')
 
-list = DoublyLinkedList()
-list.insertAtBeginning(4)
-list.insertAtBeginning(5)
-list.print()
-list.insertAtEnd(1)
-list.insertAtEnd(1)
-list.print()
-list.insertAtBeginning(8)
-list.print()
-list.insertAtGivenPosition(5, 9)
-list.print()
-print(list.length)
 
 
 
