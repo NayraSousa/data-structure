@@ -81,17 +81,23 @@ class LinkedList:
                         currentNode=currentNode.next
                     count += 1
 
-    def deleteFromGivenData(self, data):
+    def deleteAllFromGivenData(self, data):
         currentNode = self.head
         auxiliaryNode = self.head
-        if currentNode.data == data:
-            self.head = currentNode.next
-            self.length -= 1
-        while currentNode.data != data:
+
+        while currentNode.next != None:
+            if self.head.data == data:
+                self.head = currentNode.next
+                self.length -= 1
+            elif currentNode.data == data:
+                auxiliaryNode.next = currentNode.next
+                currentNode = auxiliaryNode
+                self.length -= 1
             auxiliaryNode = currentNode
             currentNode = currentNode.next
-        auxiliaryNode.next = currentNode.next
-        self.length -= 1 
+        if currentNode.data == data:
+            auxiliaryNode.next = currentNode.next
+            self.length -= 1 
 
     def print(self):
         h = self.head
@@ -101,11 +107,15 @@ class LinkedList:
         print('\n')
 
 list = LinkedList()
+
 list.insertAtBeggining(1)
 list.insertAtBeggining(2)
+list.insertAtBeggining(2)
+list.insertAtBeggining(3)
+list.insertAtBeggining(3)
 list.insertAtBeggining(3)
 list.print()
-list.insertAtEnd(4)
+list.insertAtEnd(1)
 list.print()
 list.insertAtGivenPosition(1, 5)
 list.print()
@@ -119,5 +129,7 @@ list.deleteFromEnd()
 list.print()
 list.deleteFromGivenPosition(2)
 list.print()
-list.deleteFromGivenData(4)
+list.deleteFromGivenData(1)
+list.print()
+list.deleteAllFromGivenData(1)
 list.print()
