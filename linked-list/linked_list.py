@@ -59,7 +59,7 @@ class LinkedList:
             auxiliaryNode.next = None
             self.length -= 1
 
-    def deleteAtGivenPosition(self, position):
+    def deleteFromGivenPosition(self, position):
         count = 1
         currentNode = self.head
         auxiliaryNode = self.head
@@ -80,6 +80,18 @@ class LinkedList:
                         auxiliaryNode=currentNode
                         currentNode=currentNode.next
                     count += 1
+
+    def deleteFromGivenData(self, data):
+        currentNode = self.head
+        auxiliaryNode = self.head
+        if currentNode.data == data:
+            self.head = currentNode.next
+            self.length -= 1
+        while currentNode.data != data:
+            auxiliaryNode = currentNode
+            currentNode = currentNode.next
+        auxiliaryNode.next = currentNode.next
+        self.length -= 1 
 
     def print(self):
         h = self.head
@@ -105,5 +117,7 @@ list.deleteFromBeginning()
 list.print()
 list.deleteFromEnd()
 list.print()
-list.deleteAtGivenPosition(2)
+list.deleteFromGivenPosition(2)
+list.print()
+list.deleteFromGivenData(4)
 list.print()
