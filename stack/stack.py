@@ -25,6 +25,9 @@ class Stack:
             return
         return self.array[self.top]
     
+    def size(self):
+        return self.top
+    
     def isEmpty(self):
         return self.top == 0
     
