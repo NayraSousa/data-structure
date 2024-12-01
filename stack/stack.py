@@ -41,10 +41,21 @@ class Stack:
             return
         print(stack.pop())
         self.removeElementsRecursively(stack)
+
+    def invertVector(self, vector):
+
+        for element in vector:
+            self.push(element)
+
+        for count in range(len(vector)):
+            vector[count] = self.pop()
+        return vector
         
 stack = Stack(6)
-for count in range(6):
-    stack.push(random.randint(1, 21))
+# for count in range(6):
+#     stack.push(random.randint(1, 21))
+vector = [1, 4, 5, 6, 7, 8]
 
-print(stack.removeElementsRecursively(stack))
+# print(stack.removeElementsRecursively(stack))
+print(stack.invertVector(vector))
     
