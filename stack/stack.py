@@ -1,3 +1,5 @@
+import random
+
 class Stack:
     def __init__(self, capacity=1):
         self.top = 0
@@ -33,4 +35,16 @@ class Stack:
     
     def isFull(self):
         return self.capacity==self.top+1
+    
+    def removeElementsRecursively(self, stack):
+        if stack.isEmpty():
+            return
+        print(stack.pop())
+        self.removeElementsRecursively(stack)
+        
+stack = Stack(6)
+for count in range(6):
+    stack.push(random.randint(1, 21))
+
+print(stack.removeElementsRecursively(stack))
     
