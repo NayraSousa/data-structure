@@ -25,7 +25,7 @@ class Stack:
         if self.top==-1:
             print("Stack Overflow")
             return
-        return self.array[self.top]
+        return self.array[self.top-1]
     
     def size(self):
         return self.top
