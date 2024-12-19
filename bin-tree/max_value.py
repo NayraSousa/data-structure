@@ -1,4 +1,5 @@
 from insert_tree import buildRandomTree
+from collections import deque
 
 def maxValueRecursive(root):
     if root is None:
@@ -9,7 +10,19 @@ def maxValueRecursive(root):
 
     return max(maxValueLeft, maxValueRight, root.data)
 
-tree, root = buildRandomTree(45, 10)
-tree.inOrder(root)
-print()
-print(maxValueRecursive(root))
+def maxValue(root):
+    if root is None:
+        return None
+    queue = deque([root])
+    maxValue = root.data
+
+    while queue:
+        node = queue.popleft()
+        if node.data > maxValue:
+            maxValue = node.data
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return maxValue
+
